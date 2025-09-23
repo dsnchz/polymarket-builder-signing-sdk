@@ -1,10 +1,7 @@
 # builder-signing-sdk
 
-A TypeScript SDK for creating authenticated headers for Polymarket Builder API requests using HMAC-SHA256 signatures.
+A TypeScript SDK for creating authenticated builder headers
 
-## Overview
-
-The Polymarket Builder Signing SDK provides a secure way to authenticate API requests to Polymarket's Builder service. It generates HMAC-SHA256 signatures using your API credentials and creates the necessary headers for authenticated requests.
 
 ## Installation
 
