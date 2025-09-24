@@ -24,13 +24,9 @@ export const buildHmacSignature = (
         message += body;
     }
 
-    console.log(`Prehash message:`);
-    console.log(message);
     const base64Secret = Buffer.from(secret, "base64");
     const hmac = crypto.createHmac("sha256", base64Secret);
     const sig = hmac.update(message).digest("base64");
-    const hexSig = crypto.createHmac("sha256", base64Secret).update(message).digest("hex");
-    console.log(`Hex hmac sig: ${hexSig}`);
 
     // NOTE: Must be url safe base64 encoding, but keep base64 "=" suffix
     // Convert '+' to '-'
