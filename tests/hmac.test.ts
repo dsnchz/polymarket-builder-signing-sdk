@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { buildHmacSignature } from "../src/signing";
 
 describe("hmac", () => {
-    it("buildPolyHmacSignature", () => {
+    it("buildHmacSignature", () => {
         const signature = buildHmacSignature(
             "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
             1000000,

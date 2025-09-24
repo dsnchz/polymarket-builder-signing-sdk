@@ -13,8 +13,13 @@ export class BuilderSigner {
         body: string,
         path: string,
         method: string,
+        timestamp?: number,
     ): BuilderHeaderPayload {
-        const ts = Math.floor(Date.now() / 1000);
+        let ts = Math.floor(Date.now() / 1000);
+        if (timestamp !== undefined) {
+            ts = timestamp;
+        }
+        
         const builderSig = buildHmacSignature(
             this.creds.secret,
             ts,
