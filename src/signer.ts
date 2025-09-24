@@ -10,16 +10,16 @@ export class BuilderSigner {
     }
 
     public createBuilderHeaderPayload(
-        body: string,
-        path: string,
         method: string,
+        path: string,
+        body?: string,
         timestamp?: number,
     ): BuilderHeaderPayload {
         let ts = Math.floor(Date.now() / 1000);
         if (timestamp !== undefined) {
             ts = timestamp;
         }
-        
+
         const builderSig = buildHmacSignature(
             this.creds.secret,
             ts,

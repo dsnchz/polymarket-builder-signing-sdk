@@ -14,17 +14,17 @@ pnpm install @polymarket/builder-signing-sdk
 ```typescript
 import { BuilderSigner } from '@polymarket/builder-signing-sdk';
 
-// Initialize with your API credentials
+// Initialize with builder API creds
 const signer = new BuilderSigner({
   key: 'your-api-key',
   secret: 'your-base64-secret',
   passphrase: 'your-passphrase'
 });
 
-// Create headers for an builder headers for a request
+// Create builder payload
 const headers = signer.createBuilderHeaderPayload(
-  '{"marketId": "0x123"}', // Request body
-  '/order',               // API endpoint path
   'POST'                   // HTTP method
+  '/order',               // API endpoint path
+  '{"marketId": "0x123"}' // Request body
 );
 ```
