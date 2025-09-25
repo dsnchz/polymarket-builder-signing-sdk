@@ -15,14 +15,14 @@ pnpm install @polymarket/builder-signing-sdk
 import { BuilderSigner } from '@polymarket/builder-signing-sdk';
 
 // Initialize with builder API creds
-const signer = new BuilderSigner({
-  key: 'your-api-key',
+const builderSigner = new BuilderSigner({
+  key: 'your-builder-api-key',
   secret: 'your-base64-secret',
   passphrase: 'your-passphrase'
 });
 
 // Create builder payload
-const headers = signer.createBuilderHeaderPayload(
+const headers = builderSigner.createBuilderHeaderPayload(
   'POST'                   // HTTP method
   '/order',               // API endpoint path
   '{"marketId": "0x123"}' // Request body
