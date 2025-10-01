@@ -1,8 +1,21 @@
 
+export enum BuilderType {
+    UNAVAILABLE = "UNAVAILABLE",
+    LOCAL = "LOCAL",
+    REMOTE = "REMOTE",
+}
+
 export interface BuilderApiKeyCreds {
     key: string;
     secret: string;
     passphrase: string;
+}
+
+export interface RemoteSignerPayload {
+    method: string,
+    path: string,
+    body?: string,
+    timestamp?: number,
 }
 
 export interface BuilderHeaderPayload {
