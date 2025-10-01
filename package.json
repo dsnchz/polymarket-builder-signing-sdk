@@ -1,7 +1,7 @@
 {
     "name": "@polymarket/builder-signing-sdk",
     "description": "Polymarket SDK for creating builder headers",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "contributors": [
         {
             "name": "Jonathan Amenechi",
@@ -16,11 +16,12 @@
     "license": "MIT",
     "scripts": {
         "build": "make build",
-        "deploy": "yarn build && npm publish",
+        "deploy": "make build && npm publish",
         "test": "make test"
     },
     "dependencies": {
-        "@types/node": "^18.7.18"
+        "@types/node": "^18.7.18",
+        "tslib": "^2.8.1"
     },
     "devDependencies": {
         "@types/chai": "^4.3.3",
