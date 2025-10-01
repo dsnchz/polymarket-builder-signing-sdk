@@ -2,11 +2,11 @@
 build:
 	@echo "Building ts code..."
 	rm -rf dist
-	yarn tsc --module commonjs
+	pnpm exec tsc --module commonjs
 
 .PHONY: test
 test:
-	yarn nyc -a \
+	pnpm exec nyc -a \
 		--reporter=html \
 		--reporter=text mocha './tests' \
 		--require esm \
