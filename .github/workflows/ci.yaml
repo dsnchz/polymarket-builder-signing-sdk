@@ -12,7 +12,12 @@ jobs:
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4.1.4
+            
+            - name: install pnpm
+              uses: pnpm/action-setup@v2
+              with:
+                version: 10.12.4
 
             - run: pnpm install --frozen-lockfile
             - run: pnpm test
-            - run: yarn test
+
