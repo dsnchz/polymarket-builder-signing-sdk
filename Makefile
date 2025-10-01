@@ -15,8 +15,3 @@ test:
 		--require tsconfig-paths/register \
 		--timeout 300000 \
 		--exit
-
-.PHONY: lint
-lint:
-	@echo "Linting code..."
-	./node_modules/.bin/eslint ./src --ext .js,.ts

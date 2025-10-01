@@ -12,7 +12,3 @@ export interface BuilderHeaderPayload {
     POLY_BUILDER_SIGNATURE: string;
 }
 
-export interface BuilderConfig {
-    remoteBuilderSignerUrl?: string;
-    localBuilderCreds?: BuilderApiKeyCreds;
-}

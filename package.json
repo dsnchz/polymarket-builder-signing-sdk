@@ -16,7 +16,6 @@
     "license": "MIT",
     "scripts": {
         "build": "make build",
-        "lint": "make lint",
         "deploy": "yarn build && npm publish",
         "test": "make test"
     },
