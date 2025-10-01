@@ -15,7 +15,7 @@ describe("builderHeaderPayload", () => {
         const requestMethod = "POST";
         const timestamp = 1758744060;
         
-        const payload = signer.createBuilderHeaderPayload(requestBody, requestPath, requestMethod, timestamp);
+        const payload = signer.createBuilderHeaderPayload(requestMethod,requestPath, requestBody, timestamp);
         
         expect(payload).not.null;
         expect(payload).not.undefined;
