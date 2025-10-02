@@ -23,5 +23,6 @@ export interface BuilderHeaderPayload {
     POLY_BUILDER_TIMESTAMP: string;
     POLY_BUILDER_PASSPHRASE: string;
     POLY_BUILDER_SIGNATURE: string;
+    [key: string]: string;
 }
 
