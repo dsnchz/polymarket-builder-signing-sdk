@@ -19,6 +19,12 @@ export class BuilderConfig {
                 if (!BuilderConfig.hasValidRemoteUrl(config.remoteBuilderConfig.url)) {
                     throw new Error("invalid remote url!");
                 }
+                if (config.remoteBuilderConfig.token !== undefined) {
+                    const tk = config.remoteBuilderConfig.token;
+                    if (tk.length === 0) {
+                        throw new Error("invalid auth token");
+                    }
+                }
                 this.remoteBuilderConfig = config.remoteBuilderConfig;
             }
             if (config.localBuilderCreds !== undefined) {
@@ -111,10 +117,10 @@ export class BuilderConfig {
         return true;
     }
     
-      private static hasValidRemoteUrl(remoteBuilderSignerUrl?: string): boolean {
-          if (!remoteBuilderSignerUrl?.trim()) return false;
+      private static hasValidRemoteUrl(remoteUrl?: string): boolean {
+          if (!remoteUrl?.trim()) return false;
           try {
-              const url = new URL(remoteBuilderSignerUrl.trim());
+              const url = new URL(remoteUrl.trim());
               return url.protocol === "http:" || url.protocol === "https:";
           } catch {
               return false;

@@ -83,7 +83,7 @@ describe("builder config", () => {
 
         // Create config with remote signer URL
         const builderConfig = new BuilderConfig({
-            remoteBuilderConfig: {url: remoteSignerUrl, token: "myauthtoken"}
+            remoteBuilderConfig: {url: remoteSignerUrl}
         });
 
         expect(builderConfig.getBuilderType()).equal(BuilderType.REMOTE);
