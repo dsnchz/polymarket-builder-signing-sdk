@@ -72,7 +72,7 @@ export class BuilderConfig {
                 return await post(url, {
                     data: payload,
                     headers: {
-                      ...(token ? { Authorization: token } : {}),
+                      ...(token ? { Authorization: `Bearer ${token}` } : {}),
                     } as AxiosRequestHeaders,
                   });
             } catch (err) {
