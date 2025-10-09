@@ -2,23 +2,24 @@ import { URL } from 'url';
 
 import { BuilderSigner } from "./signer";
 import { post } from "./http-helpers";
-import { BuilderApiKeyCreds, BuilderHeaderPayload, BuilderType, RemoteSignerPayload } from "./types";
+import { BuilderApiKeyCreds, BuilderHeaderPayload, BuilderType, RemoteBuilderConfig, RemoteSignerPayload } from "./types";
+import { AxiosRequestHeaders } from 'axios';
 
 export class BuilderConfig {
-    readonly remoteBuilderSignerUrl?: string;
+    readonly remoteBuilderConfig?: RemoteBuilderConfig;
     readonly localBuilderCreds?: BuilderApiKeyCreds;
     readonly signer?: BuilderSigner;
 
     constructor(config?: { 
-        remoteBuilderSignerUrl?: string; 
-        localBuilderCreds?: BuilderApiKeyCreds; 
+        remoteBuilderConfig?: RemoteBuilderConfig;
+        localBuilderCreds?: BuilderApiKeyCreds;
     }) {
         if (config) {
-            if (config.remoteBuilderSignerUrl !== undefined) {
-                if (!BuilderConfig.hasValidRemoteUrl(config.remoteBuilderSignerUrl)) {
+            if (config.remoteBuilderConfig !== undefined) {
+                if (!BuilderConfig.hasValidRemoteUrl(config.remoteBuilderConfig.url)) {
                     throw new Error("invalid remote url!");
                 }
-                this.remoteBuilderSignerUrl = config.remoteBuilderSignerUrl;
+                this.remoteBuilderConfig = config.remoteBuilderConfig;
             }
             if (config.localBuilderCreds !== undefined) {
                 if (!BuilderConfig.hasValidLocalCreds(config.localBuilderCreds)) {
@@ -51,7 +52,7 @@ export class BuilderConfig {
         } 
         
         if (builderType == BuilderType.REMOTE) {
-            const url: string = this.remoteBuilderSignerUrl as string;
+            const url: string = (this.remoteBuilderConfig as RemoteBuilderConfig).url;
             // Execute a POST to the remote signer url with the header arguments
             const payload: RemoteSignerPayload = {
                 method: method,
@@ -59,8 +60,15 @@ export class BuilderConfig {
                 body: body,
                 timestamp: timestamp,
             };
+            
             try {
-                return await post(url, {data: payload});
+                const token = (this.remoteBuilderConfig as RemoteBuilderConfig).token;
+                return await post(url, {
+                    data: payload,
+                    headers: {
+                      ...(token ? { Authorization: token } : {}),
+                    } as AxiosRequestHeaders,
+                  });
             } catch (err) {
                 console.error("error calling remote signer", err);
                 return undefined;
@@ -75,7 +83,7 @@ export class BuilderConfig {
 
     public getBuilderType(): BuilderType {
         const local = this.localBuilderCreds;
-        const remote = this.remoteBuilderSignerUrl;
+        const remote = this.remoteBuilderConfig;
         if (local && remote) {
             // If both present, prefer local
             return BuilderType.LOCAL;
