@@ -11,6 +11,11 @@ export interface BuilderApiKeyCreds {
     passphrase: string;
 }
 
+export interface RemoteBuilderConfig {
+    url: string;
+    token?: string; // Optional authorization token
+}
+
 export interface RemoteSignerPayload {
     method: string,
     path: string,

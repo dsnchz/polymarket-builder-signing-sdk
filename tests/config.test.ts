@@ -30,14 +30,14 @@ describe("builder config", () => {
         builderConfig = new BuilderConfig({localBuilderCreds: creds});
         expect(builderConfig.getBuilderType()).equal(BuilderType.LOCAL);
 
-        builderConfig = new BuilderConfig({remoteBuilderSignerUrl: "http://localhost:3000/sign"})
+        builderConfig = new BuilderConfig({remoteBuilderConfig: {url: "http://localhost:3000/sign"} })
         expect(builderConfig.getBuilderType()).equal(BuilderType.REMOTE);
 
         builderConfig = new BuilderConfig()
         expect(builderConfig.getBuilderType()).equal(BuilderType.UNAVAILABLE);
 
         // if both local is preferred
-        builderConfig = new BuilderConfig({localBuilderCreds: creds, remoteBuilderSignerUrl: "http://localhost:3000/sign"})
+        builderConfig = new BuilderConfig({localBuilderCreds: creds, remoteBuilderConfig: {url: "http://localhost:3000/sign"}})
         expect(builderConfig.getBuilderType()).equal(BuilderType.LOCAL);
     });
 
@@ -83,7 +83,7 @@ describe("builder config", () => {
 
         // Create config with remote signer URL
         const builderConfig = new BuilderConfig({
-            remoteBuilderSignerUrl: remoteSignerUrl
+            remoteBuilderConfig: {url: remoteSignerUrl}
         });
 
         expect(builderConfig.getBuilderType()).equal(BuilderType.REMOTE);
