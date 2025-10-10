@@ -1,6 +1,12 @@
 import { BuilderSigner } from "./signer";
 import { post } from "./http-helpers";
-import { BuilderApiKeyCreds, BuilderHeaderPayload, BuilderType, RemoteBuilderConfig, RemoteSignerPayload } from "./types";
+import {
+    BuilderApiKeyCreds,
+    BuilderHeaderPayload,
+    BuilderType,
+    RemoteBuilderConfig,
+    RemoteSignerPayload 
+} from "./types";
 import { AxiosRequestHeaders } from 'axios';
 
 export class BuilderConfig {
