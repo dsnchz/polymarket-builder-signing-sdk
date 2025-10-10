@@ -1,8 +1,12 @@
-import { URL } from 'url';
-
 import { BuilderSigner } from "./signer";
 import { post } from "./http-helpers";
-import { BuilderApiKeyCreds, BuilderHeaderPayload, BuilderType, RemoteBuilderConfig, RemoteSignerPayload } from "./types";
+import {
+    BuilderApiKeyCreds,
+    BuilderHeaderPayload,
+    BuilderType,
+    RemoteBuilderConfig,
+    RemoteSignerPayload 
+} from "./types";
 import { AxiosRequestHeaders } from 'axios';
 
 export class BuilderConfig {
@@ -119,12 +123,7 @@ export class BuilderConfig {
     
       private static hasValidRemoteUrl(remoteUrl?: string): boolean {
           if (!remoteUrl?.trim()) return false;
-          try {
-              const url = new URL(remoteUrl.trim());
-              return url.protocol === "http:" || url.protocol === "https:";
-          } catch {
-              return false;
-          }
+          return remoteUrl.startsWith("http://") || remoteUrl.startsWith("https://");
       }
     
       private ensureValid(): void {
