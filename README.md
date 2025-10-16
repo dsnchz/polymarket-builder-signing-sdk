@@ -14,15 +14,36 @@ pnpm install @polymarket/builder-signing-sdk
 ```typescript
 import { BuilderSigner } from '@polymarket/builder-signing-sdk';
 
-// Initialize with builder API creds
-const builderSigner = new BuilderSigner({
-  key: 'your-builder-api-key',
-  secret: 'your-base64-secret',
-  passphrase: 'your-passphrase'
-});
+// Create a builder config for signing
 
-// Create builder payload
-const headers = builderSigner.createBuilderHeaderPayload(
+// Local
+const builderConfig = new BuilderConfig(
+  {
+    localBuilderCreds: {
+      key: "xxxxxxx-xxx-xxxx-xxx-xxxxxxxxx",
+      secret: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      passphrase: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    },
+  },
+);
+
+const headers = await builderConfig.generateBuilderHeaders(
+  'POST'                   // HTTP method
+  '/order',               // API endpoint path
+  '{"marketId": "0x123"}' // Request body
+);
+
+// Remote
+const builderConfig = new BuilderConfig(
+  {
+    remoteBuilderConfig: {
+      url: remoteSignerUrl,
+      token: `${process.env.MY_AUTH_TOKEN}`
+    }
+  },
+);
+
+const headers = await builderConfig.generateBuilderHeaders(
   'POST'                   // HTTP method
   '/order',               // API endpoint path
   '{"marketId": "0x123"}' // Request body
