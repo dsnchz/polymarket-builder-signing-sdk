@@ -16,8 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "make build",
-    "deploy": "make build && npm publish",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "lint": "eslint .",
@@ -41,6 +41,7 @@
     "path": "^0.12.7",
     "prettier": "^3.6.2",
     "sinon": "^21.0.0",
+    "tsup": "8.5.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "8.46.2"
   },
