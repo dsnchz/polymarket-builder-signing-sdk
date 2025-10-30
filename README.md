@@ -2,7 +2,6 @@
 
 A TypeScript SDK for creating authenticated builder headers
 
-
 ## Installation
 
 ```bash
