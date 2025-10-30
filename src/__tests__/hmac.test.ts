@@ -1,10 +1,10 @@
 import { describe, expect, it } from "bun:test";
 
-import { buildHmacSignature } from "../signing";
+import { buildHmacSignature } from "../hmac";
 
 describe("hmac", () => {
-  it("buildHmacSignature", () => {
-    const signature = buildHmacSignature(
+  it("buildHmacSignature", async () => {
+    const signature = await buildHmacSignature(
       "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
       1000000,
       "test-sign",

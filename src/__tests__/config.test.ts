@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import sinon from "sinon";
 
-import * as httpHelpers from "../http-helpers";
+import * as httpHelpers from "../http";
 import {
   type BuilderApiKeyCreds,
   BuilderConfig,

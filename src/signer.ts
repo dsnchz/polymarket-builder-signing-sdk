@@ -1,4 +1,4 @@
-import { buildHmacSignature } from "./signing";
+import { buildHmacSignature } from "./hmac";
 import type { BuilderApiKeyCreds, BuilderHeaderPayload } from "./types";
 
 export class BuilderSigner {
@@ -8,18 +8,18 @@ export class BuilderSigner {
     this.creds = creds;
   }
 
-  public createBuilderHeaderPayload(
+  public async createBuilderHeaderPayload(
     method: string,
     path: string,
     body?: string,
     timestamp?: number,
-  ): BuilderHeaderPayload {
+  ): Promise<BuilderHeaderPayload> {
     let ts = Math.floor(Date.now() / 1000);
     if (timestamp !== undefined) {
       ts = timestamp;
     }
 
-    const builderSig = buildHmacSignature(this.creds.secret, ts, method, path, body);
+    const builderSig = await buildHmacSignature(this.creds.secret, ts, method, path, body);
 
     return {
       POLY_BUILDER_API_KEY: this.creds.key,

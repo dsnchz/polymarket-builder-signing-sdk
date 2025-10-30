@@ -1,4 +1,4 @@
 export * from "./config";
+export * from "./hmac";
 export * from "./signer";
-export * from "./signing";
 export * from "./types";

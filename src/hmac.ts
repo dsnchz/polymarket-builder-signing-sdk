@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import { createHmac } from "./crypto";
 
 function replaceAll(s: string, search: string, replace: string) {
   return s.split(search).join(replace);
@@ -12,21 +12,20 @@ function replaceAll(s: string, search: string, replace: string) {
  * @param passphrase
  * @returns string
  */
-export const buildHmacSignature = (
+export const buildHmacSignature = async (
   secret: string,
   timestamp: number,
   method: string,
   requestPath: string,
   body?: string,
-): string => {
+): Promise<string> => {
   let message = timestamp + method + requestPath;
+
   if (body !== undefined) {
     message += body;
   }
 
-  const base64Secret = Buffer.from(secret, "base64");
-  const hmac = crypto.createHmac("sha256", base64Secret);
-  const sig = hmac.update(message).digest("base64");
+  const sig = await createHmac(secret, message);
 
   // NOTE: Must be url safe base64 encoding, but keep base64 "=" suffix
   // Convert '+' to '-'

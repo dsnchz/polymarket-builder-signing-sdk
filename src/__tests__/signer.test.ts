@@ -3,7 +3,7 @@ import { describe, expect, it } from "bun:test";
 import { type BuilderApiKeyCreds, BuilderSigner } from "../index";
 
 describe("builderHeaderPayload", () => {
-  it("createBuilderHeaderPayload", () => {
+  it("createBuilderHeaderPayload", async () => {
     const creds: BuilderApiKeyCreds = {
       key: "019894b9-cb40-79c4-b2bd-6aecb6f8c6c5",
       secret: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
@@ -15,7 +15,7 @@ describe("builderHeaderPayload", () => {
     const requestMethod = "POST";
     const timestamp = 1758744060;
 
-    const payload = signer.createBuilderHeaderPayload(
+    const payload = await signer.createBuilderHeaderPayload(
       requestMethod,
       requestPath,
       requestBody,
