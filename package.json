@@ -1,7 +1,7 @@
 {
   "name": "@dschz/polymarket-builder-signing-sdk",
   "description": "Polymarket SDK for creating builder headers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "author": "Daniel Sanchez <dsanc89@pm.me>",
   "license": "MIT",
