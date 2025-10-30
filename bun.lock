@@ -5,7 +5,6 @@
       "name": "@polymarket/builder-signing-sdk",
       "dependencies": {
         "axios": "^1.13.1",
-        "tslib": "^2.8.1",
       },
       "devDependencies": {
         "@changesets/cli": "2.29.7",
