@@ -1,17 +1,24 @@
-# builder-signing-sdk
+# Polymarket Builder Signing SDK (@dschz)
+
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![npm](https://img.shields.io/npm/v/@dschz/polymarket-builder-signing-sdk?color=blue)](https://www.npmjs.com/package/@dschz/polymarket-builder-signing-sdk)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/@dschz/polymarket-builder-signing-sdk)](https://bundlephobia.com/package/@dschz/polymarket-builder-signing-sdk)
+[![CI](https://github.com/dsnchz/polymarket-builder-signing-sdk/actions/workflows/ci.yaml/badge.svg)](https://github.com/dsnchz/polymarket-builder-signing-sdk/actions/workflows/ci.yaml)
+
+Fork of [Polymarket Builder Signing SDK](https://github.com/Polymarket/builder-signing-sdk).
 
 A TypeScript SDK for creating authenticated builder headers
 
 ## Installation
 
 ```bash
-pnpm install @polymarket/builder-signing-sdk
+pnpm install @dschz/polymarket-builder-signing-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { BuilderSigner } from '@polymarket/builder-signing-sdk';
+import { BuilderSigner } from '@dschz/polymarket-builder-signing-sdk';
 
 // Create a builder config for signing
 
