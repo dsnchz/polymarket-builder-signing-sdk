@@ -1,5 +1,3 @@
-import type { AxiosRequestHeaders } from "axios";
-
 import { post } from "./http";
 import { BuilderSigner } from "./signer";
 import {
@@ -77,10 +75,10 @@ export class BuilderConfig {
       try {
         const token = (this.remoteBuilderConfig as RemoteBuilderConfig).token;
         return await post(url, {
-          data: payload,
+          body: payload,
           headers: {
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          } as AxiosRequestHeaders,
+          },
         });
       } catch (err) {
         console.error("error calling remote signer", err);
