@@ -1,5 +1,11 @@
 # @dschz/polymarket-builder-signing-sdk
 
+## 0.3.0
+
+### Minor Changes
+
+- Removes axios dependency
+
 ## 0.2.0
 
 ### Minor Changes
