@@ -57,7 +57,7 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "16.4.0",
     "jiti": "2.6.1",
-    "oxfmt": "^0.60.0",
+    "oxfmt": "0.60.0",
     "path": "^0.12.7",
     "sinon": "^21.0.0",
     "tsup": "8.5.0",
