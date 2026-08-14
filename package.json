@@ -1,10 +1,9 @@
 {
   "name": "@dschz/polymarket-builder-signing-sdk",
-  "description": "Polymarket SDK for creating builder headers",
   "version": "0.3.0",
-  "type": "module",
-  "author": "Daniel Sanchez <dsanc89@pm.me>",
+  "description": "Polymarket SDK for creating builder headers",
   "license": "MIT",
+  "author": "Daniel Sanchez <dsanc89@pm.me>",
   "contributors": [
     {
       "name": "Daniel Sanchez",
@@ -15,14 +14,12 @@
       "url": "https://github.com/JonathanAmenechi"
     }
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -30,11 +27,14 @@
       "default": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "build:watch": "tsup --watch",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "pkg:changeset": "changeset",
@@ -57,8 +57,8 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "16.4.0",
     "jiti": "2.6.1",
+    "oxfmt": "^0.60.0",
     "path": "^0.12.7",
-    "prettier": "^3.6.2",
     "sinon": "^21.0.0",
     "tsup": "8.5.0",
     "typescript": "^5.9.3",
